@@ -1,0 +1,306 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f8f6f1;
+  --fg: #1c1b18;
+  --muted: #97968f;
+  --rule: #dedad2;
+  --accent: #6b5744;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+html { font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: max(4rem, 8vh) 2rem 3rem;
+}
+
+/* ── Site Nav ── */
+
+.site-nav {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 10;
+}
+
+.site-nav a {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  position: relative;
+}
+
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+.site-nav a:hover::after { width: 100%; }
+
+/* ── Layout ── */
+
+main {
+  max-width: 580px;
+  width: 100%;
+  margin: 0 auto;
+  flex: 1;
+  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+footer {
+  max-width: 580px;
+  width: 100%;
+  margin: 2rem auto 0;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+/* ── Rules ── */
+
+hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 2.75rem 0;
+}
+
+/* ── Header ── */
+
+h1 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(3rem, 9vw, 5.25rem);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.65rem;
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+  font-weight: 300;
+  max-width: 42ch;
+  line-height: 1.55;
+}
+
+.tagline:empty { display: none; }
+
+/* ── Links ── */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+a:hover::after { width: 100%; }
+
+/* ── Contact ── */
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 2.25rem;
+}
+
+.contact a {
+  font-size: 0.88rem;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+}
+
+/* ── Interests ── */
+
+.interests h2 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.9rem;
+}
+
+.interests ul { list-style: none; }
+
+.interests li {
+  font-size: 0.92rem;
+  padding: 0.22rem 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+}
+
+.interests li::before {
+  content: "–";
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.interests li:has(.sub-interests) {
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.sub-interests {
+  width: 100%;
+  list-style: none;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.sub-interests li {
+  font-size: 0.82rem;
+  padding: 0.08rem 0;
+  padding-left: 1.1rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: baseline;
+}
+
+.sub-interests li::before {
+  content: "↳";
+  font-size: 0.72rem;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════
+   HOME — photo background
+   ═══════════════════════════════
+   Drop a file at /images/hero.jpg to activate.
+   Until then, the dark fallback color shows.      */
+
+body.home {
+  /* fallback color shows when no image is present */
+  background: #1e1710 url('/images/hero.jpg') center / cover no-repeat;
+  background-attachment: fixed;
+
+  --fg: #f0ede8;
+  --muted: rgba(255, 255, 255, 0.5);
+  --rule: rgba(255, 255, 255, 0.15);
+  --accent: rgba(255, 255, 255, 0.8);
+
+  color: var(--fg);
+}
+
+body.home main,
+body.home footer {
+  position: relative;
+  z-index: 1;
+}
+
+body.home main {
+  background: rgba(10, 8, 6, 0.45);
+  padding: 2.5rem 3rem;
+  border-radius: 3px;
+}
+
+body.home .site-nav a {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* disable fixed attachment on iOS (it breaks there) */
+@media (max-width: 768px) {
+  body.home { background-attachment: scroll; }
+}
+
+/* ═══════════════════════════════
+   PHOTOGRAPHY — photo grid
+   ═══════════════════════════════ */
+
+body.photography main {
+  max-width: 900px;
+}
+
+body.photography footer {
+  max-width: 900px;
+}
+
+body.photography h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 0.4rem;
+}
+
+.photo-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.photo-grid img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.2s ease, transform 0.3s ease;
+}
+
+.photo-grid img:hover {
+  opacity: 0.88;
+  transform: scale(1.01);
+}
+
+.photo-grid-empty {
+  margin-top: 2.5rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 400px) {
+  .photo-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Mobile (global) ── */
+
+@media (max-width: 480px) {
+  body { padding: 3rem 1.4rem 2rem; }
+  .site-nav { top: 1.25rem; right: 1.25rem; }
+}
