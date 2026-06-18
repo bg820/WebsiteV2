@@ -251,6 +251,10 @@ body.home .site-nav a {
    ═══════════════════════════════ */
 
 body.photography {
+  background: #0f0e0d;
+  --fg: #f0ede8;
+  --muted: rgba(255, 255, 255, 0.5);
+  color: var(--fg);
   padding: max(3rem, 5vh) 0 0;
 }
 
@@ -290,6 +294,7 @@ body.photography footer {
   display: block;
   margin-bottom: 3px;
   break-inside: avoid;
+  cursor: zoom-in;
   transition: opacity 0.25s ease;
 }
 
@@ -297,8 +302,47 @@ body.photography footer {
   opacity: 0.9;
 }
 
+/* Panoramic photos span the full width (one per row) */
+.photo-grid img.wide {
+  column-span: all;
+  width: 100%;
+}
+
 @media (max-width: 600px) {
   .photo-grid { columns: 1; }
+}
+
+/* ── Lightbox ── */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(8, 7, 6, 0.94);
+  cursor: zoom-out;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+}
+
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 480px) {
+  .lightbox { padding: 1rem; }
 }
 
 /* ── Mobile (global) ── */

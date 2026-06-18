@@ -8,7 +8,8 @@
       "Bash(sips -g pixelWidth -g pixelHeight /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg)",
       "Bash(sips -s format jpeg -s formatOptions 80 /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg --out /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg)",
       "Bash(sips -s format jpeg -s formatOptions 70 /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg --out /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg)",
-      "Bash(sips --resampleWidth 2000 /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg --out /Users/bryceg/Repositories/WebsiteV2/images/test1.jpg)"
+      "Bash(sips --resampleWidth 2000 /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg --out /Users/bryceg/Repositories/WebsiteV2/images/test1.jpg)",
+      "Bash(curl -s \"https://bryceglacken.com/style.css?nocache=$\\(date +%s\\)\")"
     ]
   }
 }

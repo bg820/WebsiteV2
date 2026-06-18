@@ -33,5 +33,46 @@
   <footer>
     <span>© 2026</span>
   </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <img src="" alt="">
+  </div>
+
+  <script>
+    (function () {
+      const lb = document.getElementById('lightbox');
+      const lbImg = lb.querySelector('img');
+
+      document.querySelectorAll('.photo-grid img').forEach(function (img) {
+        // Panoramic photos (much wider than tall) span the full row
+        function checkWide() {
+          if (img.naturalWidth && img.naturalHeight &&
+              img.naturalWidth / img.naturalHeight >= 2) {
+            img.classList.add('wide');
+          }
+        }
+        if (img.complete) checkWide();
+        else img.addEventListener('load', checkWide);
+
+        img.addEventListener('click', function () {
+          lbImg.src = img.src;
+          lb.classList.add('open');
+          lb.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      function close() {
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      lb.addEventListener('click', close);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+      });
+    })();
+  </script>
 </body>
 </html>
