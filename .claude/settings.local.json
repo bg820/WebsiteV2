@@ -3,7 +3,11 @@
     "allow": [
       "Bash(mkdir -p /Users/bryceg/Repositories/WebsiteV2/.claude)",
       "mcp__Claude_Preview__preview_start",
-      "Bash(kill 56814)"
+      "Bash(kill 56814)",
+      "Bash(identify /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg)",
+      "Bash(sips -s format jpeg -s formatOptions 80 /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg --out /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg)",
+      "Bash(sips -s format jpeg -s formatOptions 70 /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg --out /Users/bryceg/Repositories/WebsiteV2/images/hero.jpg)"
     ]
   }
 }
