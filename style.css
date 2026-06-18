@@ -247,14 +247,10 @@ body.home .site-nav a {
 }
 
 /* ═══════════════════════════════
-   PHOTOGRAPHY — photo grid
+   GALLERY — photo grid (photography, ceramics)
    ═══════════════════════════════ */
 
-body.photography {
-  background: #0f0e0d;
-  --fg: #f0ede8;
-  --muted: rgba(255, 255, 255, 0.5);
-  color: var(--fg);
+body.gallery {
   padding: max(3rem, 5vh) 0 0;
 }
 
@@ -271,13 +267,13 @@ body.photography {
   line-height: 1.05;
 }
 
-body.photography main {
+body.gallery main {
   max-width: none;
   margin: 0;
   animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
 }
 
-body.photography footer {
+body.gallery footer {
   max-width: none;
   padding: 1.5rem 2.5rem;
   animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
@@ -306,6 +302,13 @@ body.photography footer {
 .photo-grid img.wide {
   column-span: all;
   width: 100%;
+}
+
+.gallery-empty {
+  padding: 0 2.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 @media (max-width: 600px) {
