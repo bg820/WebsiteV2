@@ -12,11 +12,6 @@
   --accent: #6b5744;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
 /* Smooth cross-fade between pages on navigation (supported browsers) */
 @view-transition {
   navigation: auto;
@@ -27,7 +22,10 @@
   animation-duration: 0.35s;
 }
 
-html { font-size: 16px; }
+html {
+  font-size: 16px;
+  background: var(--bg);
+}
 
 body {
   background: var(--bg);
@@ -80,7 +78,6 @@ main {
   width: 100%;
   margin: 0 auto;
   flex: 1;
-  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 footer {
@@ -92,7 +89,6 @@ footer {
   font-size: 0.72rem;
   color: var(--muted);
   letter-spacing: 0.06em;
-  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
 }
 
 /* ── Rules ── */
@@ -266,7 +262,6 @@ body.gallery {
 
 .photo-header {
   padding: max(3rem, 5vh) 2.5rem 2rem;
-  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .photo-header h1 {
@@ -280,13 +275,11 @@ body.gallery {
 body.gallery main {
   max-width: none;
   margin: 0;
-  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
 }
 
 body.gallery footer {
   max-width: none;
   padding: 1.5rem 2.5rem;
-  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
 .photo-grid {
