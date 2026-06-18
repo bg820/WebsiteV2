@@ -14,7 +14,9 @@
       "Bash(echo \"name: $\\(git config user.name\\)\")",
       "Bash(echo \"email: $\\(git config user.email\\)\")",
       "Bash(echo \"global name: $\\(git config --global user.name\\)\")",
-      "Bash(echo \"global email: $\\(git config --global user.email\\)\")"
+      "Bash(echo \"global email: $\\(git config --global user.email\\)\")",
+      "Bash(git add *)",
+      "Bash(git commit *)"
     ]
   }
 }
