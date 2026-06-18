@@ -291,11 +291,6 @@ body.gallery footer {
   margin-bottom: 3px;
   break-inside: avoid;
   cursor: zoom-in;
-  transition: opacity 0.25s ease;
-}
-
-.photo-grid img:hover {
-  opacity: 0.9;
 }
 
 /* Panoramic photos span the full width (one per row) */
