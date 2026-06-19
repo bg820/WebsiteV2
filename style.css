@@ -100,6 +100,12 @@ h1 {
   margin-bottom: 0.65rem;
 }
 
+.wordmark .dim {
+  opacity: 0.4;
+  font-size: 0.6em;
+  letter-spacing: -0.01em;
+}
+
 .tagline {
   color: var(--muted);
   font-size: 0.9rem;

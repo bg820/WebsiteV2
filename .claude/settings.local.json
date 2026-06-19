@@ -21,7 +21,11 @@
       "Bash(sips -s format jpeg -s formatOptions 58 photo-8.jpg --out photo-8.jpg)",
       "Bash(rm -rf _site)",
       "Bash(npx @11ty/eleventy)",
-      "Bash(sips -s format jpeg -s formatOptions 70 \"DSCF1228-Edit.jpg\" --out \"photo-15.jpg\")"
+      "Bash(sips -s format jpeg -s formatOptions 70 \"DSCF1228-Edit.jpg\" --out \"photo-15.jpg\")",
+      "WebSearch",
+      "WebFetch(domain:tld-list.com)",
+      "WebFetch(domain:namebeta.com)",
+      "WebFetch(domain:tldes.com)"
     ]
   }
 }
