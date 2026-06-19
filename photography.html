@@ -29,23 +29,23 @@
 
   <main>
     <div class="photo-grid">
-      <!-- Panoramas (photo-1, photo-15, photo-11, photo-14) are spaced apart so
-           they never stack directly; mixed aspect ratios sit between them. -->
-      <img src="/images/photo-2.jpg" alt="" loading="lazy">
-      <img src="/images/photo-9.jpg" alt="" loading="lazy">
-      <img src="/images/photo-5.jpg" alt="" loading="lazy">
-      <img src="/images/photo-3.jpg" alt="" loading="lazy">
-      <img src="/images/photo-1.jpg" alt="" loading="lazy">
-      <img src="/images/photo-8.jpg" alt="" loading="lazy">
-      <img src="/images/photo-12.jpg" alt="" loading="lazy">
-      <img src="/images/photo-4.jpg" alt="" loading="lazy">
-      <img src="/images/photo-15.jpg" alt="" loading="lazy">
-      <img src="/images/photo-10.jpg" alt="" loading="lazy">
-      <img src="/images/photo-6.jpg" alt="" loading="lazy">
-      <img src="/images/photo-11.jpg" alt="" loading="lazy">
-      <img src="/images/photo-13.jpg" alt="" loading="lazy">
-      <img src="/images/photo-7.jpg" alt="" loading="lazy">
-      <img src="/images/photo-14.jpg" alt="" loading="lazy">
+      <!-- Justified rows: each photo's aspect ratio (--r = width/height) lets
+           CSS size the rows to fill the width with no gaps and no cropping. -->
+      <img src="/images/photo-2.jpg"  alt="" loading="lazy" style="--r: 1.33">
+      <img src="/images/photo-9.jpg"  alt="" loading="lazy" style="--r: 0.80">
+      <img src="/images/photo-5.jpg"  alt="" loading="lazy" style="--r: 1.78">
+      <img src="/images/photo-3.jpg"  alt="" loading="lazy" style="--r: 1.50">
+      <img src="/images/photo-1.jpg"  alt="" loading="lazy" style="--r: 2.71">
+      <img src="/images/photo-8.jpg"  alt="" loading="lazy" style="--r: 1.33">
+      <img src="/images/photo-12.jpg" alt="" loading="lazy" style="--r: 1.78">
+      <img src="/images/photo-4.jpg"  alt="" loading="lazy" style="--r: 1.50">
+      <img src="/images/photo-15.jpg" alt="" loading="lazy" style="--r: 2.35">
+      <img src="/images/photo-10.jpg" alt="" loading="lazy" style="--r: 1.50">
+      <img src="/images/photo-6.jpg"  alt="" loading="lazy" style="--r: 1.50">
+      <img src="/images/photo-11.jpg" alt="" loading="lazy" style="--r: 3.00">
+      <img src="/images/photo-13.jpg" alt="" loading="lazy" style="--r: 1.50">
+      <img src="/images/photo-7.jpg"  alt="" loading="lazy" style="--r: 1.50">
+      <img src="/images/photo-14.jpg" alt="" loading="lazy" style="--r: 2.70">
     </div>
   </main>
 
@@ -63,16 +63,6 @@
       const lbImg = lb.querySelector('img');
 
       document.querySelectorAll('.photo-grid img').forEach(function (img) {
-        // Panoramic photos (much wider than tall) span the full row
-        function checkWide() {
-          if (img.naturalWidth && img.naturalHeight &&
-              img.naturalWidth / img.naturalHeight >= 2) {
-            img.classList.add('wide');
-          }
-        }
-        if (img.complete) checkWide();
-        else img.addEventListener('load', checkWide);
-
         img.addEventListener('click', function () {
           lbImg.src = img.src;
           lb.classList.add('open');

@@ -292,24 +292,32 @@ body.gallery footer {
   padding: 1.5rem 2.5rem;
 }
 
+/* Justified rows (Flickr-style): photos fill each row's width exactly with
+   no gaps and no cropping. Each <img> carries its aspect ratio inline as
+   --r (= width / height). Because both flex-basis and flex-grow scale with
+   --r, every photo in a row resolves to the same height while keeping its
+   true proportions. */
 .photo-grid {
-  columns: 2;
-  column-gap: 3px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 3px;
 }
 
 .photo-grid img {
-  width: 100%;
   height: auto;
+  aspect-ratio: var(--r, 1.5);
+  flex-grow: var(--r, 1.5);
+  flex-basis: calc(var(--r, 1.5) * 15rem);
+  min-width: 0;
   display: block;
-  margin-bottom: 3px;
-  break-inside: avoid;
   cursor: zoom-in;
 }
 
-/* Panoramic photos span the full width (one per row) */
-.photo-grid img.wide {
-  column-span: all;
-  width: 100%;
+/* Absorbs leftover space on the final row so it isn't stretched too tall. */
+.photo-grid::after {
+  content: "";
+  flex-grow: 1000;
 }
 
 .gallery-empty {
@@ -319,9 +327,6 @@ body.gallery footer {
   font-style: italic;
 }
 
-@media (max-width: 600px) {
-  .photo-grid { columns: 1; }
-}
 
 /* ── Lightbox ── */
 

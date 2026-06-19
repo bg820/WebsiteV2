@@ -30,9 +30,10 @@
   <main>
     <div class="photo-grid">
       <!--
-        Add ceramics photos here, one <img> per photo.
-        Resize to ~2000px wide before committing, then:
-        <img src="/images/ceramic-1.jpg" alt="" loading="lazy">
+        Add ceramics photos here, one <img> per photo. Resize to ~2000px wide
+        before committing, and set --r to the photo's width / height (e.g. a
+        2000x1333 photo is ~1.5) so the justified rows size correctly:
+        <img src="/images/ceramic-1.jpg" alt="" loading="lazy" style="--r: 1.5">
       -->
     </div>
     <p class="gallery-empty">Photos coming soon.</p>
@@ -52,16 +53,6 @@
       const lbImg = lb.querySelector('img');
 
       document.querySelectorAll('.photo-grid img').forEach(function (img) {
-        // Panoramic photos (much wider than tall) span the full row
-        function checkWide() {
-          if (img.naturalWidth && img.naturalHeight &&
-              img.naturalWidth / img.naturalHeight >= 2) {
-            img.classList.add('wide');
-          }
-        }
-        if (img.complete) checkWide();
-        else img.addEventListener('load', checkWide);
-
         img.addEventListener('click', function () {
           lbImg.src = img.src;
           lb.classList.add('open');

@@ -34,9 +34,11 @@ Build command: `npm run build` · Output directory: `_site`
    ```bash
    sips --resampleWidth 2000 /path/to/photo.jpg --out images/photo-N.jpg
    ```
-2. Add an `<img>` to the `.photo-grid` in the relevant page:
+2. Add an `<img>` to the `.photo-grid` in the relevant page, setting `--r` to
+   the photo's aspect ratio (width ÷ height) so the justified rows size right:
    ```html
-   <img src="/images/photo-N.jpg" alt="" loading="lazy">
+   <img src="/images/photo-N.jpg" alt="" loading="lazy" style="--r: 1.5">
    ```
 
-Panoramas (aspect ratio wider than 2:1) automatically span the full row.
+The gallery uses a justified row layout: photos fill each row's width with no
+gaps and no cropping. Wide panoramas naturally take up more of their row.
