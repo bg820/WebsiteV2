@@ -12,26 +12,6 @@
   --accent: #6b5744;
 }
 
-/* Smooth page transitions (supported browsers).
-   The old page stays fully visible while the new page fades in on top,
-   so there's never a transparent gap that flashes white. */
-@view-transition {
-  navigation: auto;
-}
-
-@keyframes vt-fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-::view-transition-old(root) {
-  animation: none;
-}
-
-::view-transition-new(root) {
-  animation: vt-fade-in 0.35s ease both;
-}
-
 html {
   font-size: 16px;
   background: var(--bg);
