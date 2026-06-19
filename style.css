@@ -100,6 +100,11 @@ h1 {
   margin-bottom: 0.65rem;
 }
 
+.wordmark {
+  white-space: nowrap;
+  font-size: clamp(2rem, 9.5vw, 4.3rem);
+}
+
 .wordmark .dim {
   opacity: 0.4;
 }
