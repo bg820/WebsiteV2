@@ -292,11 +292,10 @@ body.gallery footer {
   padding: 1.5rem 2.5rem;
 }
 
-/* Justified rows (Flickr-style): photos fill each row's width exactly with
-   no gaps and no cropping. Each <img> carries its aspect ratio inline as
-   --r (= width / height). Because both flex-basis and flex-grow scale with
-   --r, every photo in a row resolves to the same height while keeping its
-   true proportions. */
+/* Justified rows (Flickr-style): photos fill each row's width with no gaps and
+   no cropping. gallery.js sizes each photo (using its inline --r aspect ratio)
+   so every row lands near a target height — consistent, sizeable photos.
+   The height below is a pre-JS fallback. */
 .photo-grid {
   display: flex;
   flex-wrap: wrap;
@@ -305,19 +304,11 @@ body.gallery footer {
 }
 
 .photo-grid img {
-  height: auto;
-  aspect-ratio: var(--r, 1.5);
-  flex-grow: var(--r, 1.5);
-  flex-basis: calc(var(--r, 1.5) * 15rem);
-  min-width: 0;
   display: block;
+  height: 400px;
+  width: auto;
+  object-fit: cover;
   cursor: zoom-in;
-}
-
-/* Absorbs leftover space on the final row so it isn't stretched too tall. */
-.photo-grid::after {
-  content: "";
-  flex-grow: 1000;
 }
 
 .gallery-empty {

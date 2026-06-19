@@ -2,6 +2,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("style.css");
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("favicon.svg");
+  eleventyConfig.addPassthroughCopy("gallery.js");
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("sitemap.xml");
 
