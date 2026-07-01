@@ -25,7 +25,14 @@
       "WebSearch",
       "WebFetch(domain:tld-list.com)",
       "WebFetch(domain:namebeta.com)",
-      "WebFetch(domain:tldes.com)"
+      "WebFetch(domain:tldes.com)",
+      "Bash(curl -sSI --max-time 15 http://bryceglacken.com/)",
+      "Bash(curl -sSI --max-time 15 https://bryceglacken.com/)",
+      "Bash(dig +short A bryceglacken.com)",
+      "Bash(dig +short AAAA bryceglacken.com)",
+      "Bash(curl -4 -sSI --max-time 12 http://bryceglacken.com/)",
+      "Bash(curl -6 -sSI --max-time 12 http://bryceglacken.com/)",
+      "Bash(grep -viE '^\\(photo-[0-9]+\\\\.jpg|hero\\\\.jpg|\\\\.gitkeep\\)$')"
     ]
   }
 }
