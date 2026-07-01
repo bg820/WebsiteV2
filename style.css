@@ -291,6 +291,13 @@ body.gallery {
   line-height: 1.05;
 }
 
+.photo-note {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
 body.gallery main {
   max-width: none;
   margin: 0;
