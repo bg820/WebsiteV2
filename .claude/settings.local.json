@@ -34,7 +34,12 @@
       "Bash(curl -6 -sSI --max-time 12 http://bryceglacken.com/)",
       "Bash(grep -viE '^\\(photo-[0-9]+\\\\.jpg|hero\\\\.jpg|\\\\.gitkeep\\)$')",
       "WebFetch(domain:ai-2027.com)",
-      "WebFetch(domain:80000hours.org)"
+      "WebFetch(domain:80000hours.org)",
+      "WebFetch(domain:www.ashtangayogasanskrit.com)",
+      "WebFetch(domain:svejar.com)",
+      "WebFetch(domain:www.alexjschiller.com)",
+      "WebFetch(domain:yogawithadriene.com)",
+      "WebFetch(domain:www.yogajournal.com)"
     ]
   }
 }
