@@ -39,7 +39,8 @@
       "WebFetch(domain:svejar.com)",
       "WebFetch(domain:www.alexjschiller.com)",
       "WebFetch(domain:yogawithadriene.com)",
-      "WebFetch(domain:www.yogajournal.com)"
+      "WebFetch(domain:www.yogajournal.com)",
+      "Bash(grep -viE '^\\(photo-[0-9]+\\\\.jpg|ceramic-[0-9]+\\\\.jpg|hero\\\\.jpg|\\\\.gitkeep\\)$')"
     ]
   }
 }
