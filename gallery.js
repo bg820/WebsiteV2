@@ -25,7 +25,7 @@
     var imgs = [].slice.call(grid.querySelectorAll('img'));
     var row = [], sumR = 0;
 
-    function render(items, h) {
+    function render(items, h, fill) {
       var avail = W - (items.length - 1) * GAP;
       var rh = Math.round(h);
       var used = 0;
@@ -33,7 +33,7 @@
         var w = Math.round(h * ratio(img));
         // On width-filling rows, let the last photo absorb rounding so the row
         // ends flush with the container edge (no sliver gap).
-        if (h !== H && i === items.length - 1) w = avail - used;
+        if (fill && i === items.length - 1) w = avail - used;
         used += w;
         img.style.width = w + 'px';
         img.style.height = rh + 'px';
@@ -57,20 +57,26 @@
         if (breakBefore) {
           var last = row.pop();
           sumR -= ratio(last);
-          render(row, (W - (row.length - 1) * GAP) / sumR);
+          render(row, (W - (row.length - 1) * GAP) / sumR, true);
           row = [last];
           sumR = ratio(last);
         } else {
-          render(row, hKeep);
+          render(row, hKeep, true);
           row = [];
           sumR = 0;
         }
       }
     });
-    // Last row: target height, left-aligned — but never wider than the
-    // container (a wide panorama on a narrow screen scales down to fit).
+    // Last row: stretch it to fill the width like the others, so it reaches the
+    // edge with no trailing gap. Cap the height at 1.5x the target so a lone
+    // leftover photo grows a bit but never balloons (then it sits left-aligned).
     if (row.length) {
-      render(row, Math.min(H, (W - (row.length - 1) * GAP) / sumR));
+      var lastH = (W - (row.length - 1) * GAP) / sumR;
+      if (lastH <= H * 1.5) {
+        render(row, lastH, true);
+      } else {
+        render(row, H * 1.5, false);
+      }
     }
   }
 
