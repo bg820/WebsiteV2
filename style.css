@@ -280,7 +280,7 @@ body.gallery {
 }
 
 .photo-header {
-  padding: max(3rem, 5vh) 0 2rem;
+  padding: max(3rem, 5vh) 2rem 2rem;
 }
 
 .photo-header h1 {
@@ -305,7 +305,7 @@ body.gallery main {
 
 body.gallery footer {
   max-width: none;
-  padding: 1.5rem 0 0;
+  padding: 1.5rem 2rem 0;
 }
 
 /* Justified rows (Flickr-style): photos fill each row's width with no gaps and
