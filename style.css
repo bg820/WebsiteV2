@@ -276,7 +276,7 @@ body.home .site-nav a {
    ═══════════════════════════════ */
 
 body.gallery {
-  padding: max(3rem, 5vh) 2.5rem 2.5rem;
+  padding: max(3rem, 5vh) 3px 3px;
 }
 
 .photo-header {
@@ -306,13 +306,6 @@ body.gallery main {
 body.gallery footer {
   max-width: none;
   padding: 1.5rem 0 0;
-}
-
-@media (max-width: 480px) {
-  body.gallery {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
 }
 
 /* Justified rows (Flickr-style): photos fill each row's width with no gaps and
