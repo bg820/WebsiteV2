@@ -1,0 +1,21 @@
+---
+layout: base.njk
+bodyClass: gallery
+---
+  <nav class="site-nav">
+    <a href="/">← Bryce Glacken</a>
+  </nav>
+
+  <header class="photo-header">
+    <h1>{{ title }}</h1>
+  </header>
+
+  <main>
+{{ content | safe }}
+  </main>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+    <img alt="">
+  </dialog>
+
+  <script src="/gallery.js" defer></script>

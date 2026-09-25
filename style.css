@@ -32,7 +32,7 @@ body {
 /* ── Site Nav ── */
 
 .site-nav {
-  position: fixed;
+  position: absolute;
   top: 2rem;
   right: 2rem;
   z-index: 10;
@@ -44,22 +44,7 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
-  text-decoration: none;
-  position: relative;
 }
-
-.site-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: currentColor;
-  transition: width 0.2s ease;
-}
-
-.site-nav a:hover::after { width: 100%; }
 
 /* ── Layout ── */
 
@@ -117,8 +102,6 @@ h1 {
   max-width: 42ch;
   line-height: 1.55;
 }
-
-.tagline:empty { display: none; }
 
 /* ── Links ── */
 
@@ -233,9 +216,7 @@ a:hover::after { width: 100%; }
 
 /* ═══════════════════════════════
    HOME — photo background
-   ═══════════════════════════════
-   Drop a file at /images/hero.jpg to activate.
-   Until then, the dark fallback color shows.      */
+   ═══════════════════════════════ */
 
 body.home {
   /* fallback color shows when no image is present */
@@ -260,10 +241,6 @@ body.home main {
   background: rgba(10, 8, 6, 0.45);
   padding: 2.5rem 3rem;
   border-radius: 3px;
-}
-
-body.home .site-nav a {
-  color: rgba(255, 255, 255, 0.6);
 }
 
 /* disable fixed attachment on iOS (it breaks there) */
@@ -291,13 +268,6 @@ body.gallery {
   line-height: 1.05;
 }
 
-.photo-note {
-  margin-top: 0.6rem;
-  color: var(--muted);
-  font-size: 0.9rem;
-  font-style: italic;
-}
-
 body.gallery main {
   max-width: none;
   margin: 0;
@@ -308,10 +278,15 @@ body.gallery footer {
   padding: 1.5rem 2rem 0;
 }
 
+/* Keep the page width steady when the lightbox locks scrolling, so the
+   photos behind it don't jump. */
+html:has(body.gallery) { scrollbar-gutter: stable; }
+html:has(.lightbox[open]) { overflow: hidden; }
+
 /* Justified rows (Flickr-style): photos fill each row's width with no gaps and
-   no cropping. gallery.js sizes each photo (using its inline --r aspect ratio)
-   so every row lands near a target height — consistent, sizeable photos.
-   The height below is a pre-JS fallback. */
+   no cropping. gallery.js sizes each photo link (using its inline --r aspect
+   ratio) so every row lands near a target height — consistent, sizeable
+   photos. The height below is a pre-JS fallback. */
 .photo-grid {
   display: flex;
   flex-wrap: wrap;
@@ -319,43 +294,63 @@ body.gallery footer {
   gap: 3px;
 }
 
-.photo-grid img {
+.photo-grid a {
   display: block;
   height: 400px;
-  width: auto;
-  object-fit: cover;
+  aspect-ratio: var(--r);
+  max-width: 100%;
+  background: var(--rule); /* placeholder while the photo loads */
   cursor: zoom-in;
 }
 
-.gallery-empty {
-  padding: 0 2.5rem;
-  color: var(--muted);
-  font-size: 0.9rem;
-  font-style: italic;
+.photo-grid a::after { content: none; }
+
+.photo-grid a:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.photo-grid img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 
 /* ── Lightbox ── */
 
 .lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: 0;
   padding: 2rem;
   background: rgba(8, 7, 6, 0.94);
   cursor: zoom-out;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    display 0.25s allow-discrete,
+    overlay 0.25s allow-discrete;
 }
 
-.lightbox.open {
+.lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 1;
-  visibility: visible;
 }
+
+@starting-style {
+  .lightbox[open] { opacity: 0; }
+}
+
+.lightbox::backdrop { background: transparent; }
+
+.lightbox:focus { outline: none; }
 
 .lightbox img {
   max-width: 100%;

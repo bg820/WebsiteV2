@@ -1,0 +1,38 @@
+{%- set fullTitle = (title + " — " + site.name) if title else site.name -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ fullTitle }}</title>
+  {%- if description %}
+  <meta name="description" content="{{ description }}">
+  {%- endif %}
+  {%- if noindex %}
+  <meta name="robots" content="noindex">
+  {%- else %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:title" content="{{ fullTitle }}">
+  <meta property="og:description" content="{{ ogDescription or description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ site.url }}{{ ogImage or '/images/hero.jpg' }}">
+  <meta name="twitter:card" content="summary_large_image">
+  {%- endif %}
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display&display=swap"></noscript>
+  {%- if preloadImage %}
+  <link rel="preload" as="image" href="{{ preloadImage }}">
+  {%- endif %}
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+{{ content | safe }}
+  <footer>
+    <span>© {% year %} {{ site.name }}</span>
+  </footer>
+</body>
+</html>

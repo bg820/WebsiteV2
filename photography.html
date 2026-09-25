@@ -1,71 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photography — Bryce Glacken</title>
-  <meta name="description" content="Landscape and street photography by Bryce Glacken.">
-  <meta property="og:title" content="Photography — Bryce Glacken">
-  <meta property="og:description" content="Landscape and street photography by Bryce Glacken.">
-  <meta property="og:url" content="https://br.gl/photography/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://br.gl/images/hero.jpg">
-  <link rel="canonical" href="https://br.gl/photography/">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap"></noscript>
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body class="gallery">
-  <nav class="site-nav">
-    <a href="/">← Bryce Glacken</a>
-  </nav>
-
-  <header class="photo-header">
-    <h1>Photography</h1>
-  </header>
-
-  <main>
-    <div class="photo-grid">
-      <!-- Justified rows: each photo's aspect ratio (--r = width/height) lets
-           CSS size the rows to fill the width with no gaps and no cropping. -->
-      <img src="/images/photo-2.jpg"  alt="" loading="lazy" style="--r: 1.33">
-      <img src="/images/photo-9.jpg"  alt="" loading="lazy" style="--r: 0.80">
-      <img src="/images/photo-5.jpg"  alt="" loading="lazy" style="--r: 1.78">
-      <img src="/images/photo-3.jpg"  alt="" loading="lazy" style="--r: 1.50">
-      <img src="/images/photo-1.jpg"  alt="" loading="lazy" style="--r: 2.71">
-      <img src="/images/photo-8.jpg"  alt="" loading="lazy" style="--r: 1.33">
-      <img src="/images/photo-12.jpg" alt="" loading="lazy" style="--r: 1.78">
-      <img src="/images/photo-4.jpg"  alt="" loading="lazy" style="--r: 1.50">
-      <img src="/images/photo-15.jpg" alt="" loading="lazy" style="--r: 2.35">
-      <img src="/images/photo-10.jpg" alt="" loading="lazy" style="--r: 1.50">
-      <img src="/images/photo-6.jpg"  alt="" loading="lazy" style="--r: 1.50">
-      <img src="/images/photo-11.jpg" alt="" loading="lazy" style="--r: 3.00">
-      <img src="/images/photo-13.jpg" alt="" loading="lazy" style="--r: 1.50">
-      <img src="/images/photo-14.jpg" alt="" loading="lazy" style="--r: 2.70">
-      <img src="/images/photo-16.jpg" alt="" loading="lazy" style="--r: 1.77">
-      <img src="/images/photo-21.jpg" alt="" loading="lazy" style="--r: 0.75">
-      <img src="/images/photo-20.jpg" alt="" loading="lazy" style="--r: 1.50">
-      <img src="/images/photo-19.jpg" alt="" loading="lazy" style="--r: 1.00">
-      <img src="/images/photo-17.jpg" alt="" loading="lazy" style="--r: 1.33">
-      <img src="/images/photo-23.jpg" alt="" loading="lazy" style="--r: 1.77">
-      <img src="/images/photo-18.jpg" alt="" loading="lazy" style="--r: 1.10">
-      <img src="/images/photo-22.jpg" alt="" loading="lazy" style="--r: 1.33">
-      <img src="/images/photo-24.jpg" alt="" loading="lazy" style="--r: 1.50">
-    </div>
-  </main>
-
-  <footer>
-    <span>© 2026 Bryce Glacken</span>
-  </footer>
-
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <img src="" alt="">
-  </div>
-
-  <script src="/gallery.js" defer></script>
-</body>
-</html>
+---
+layout: gallery.njk
+title: Photography
+description: Landscape and street photography by Bryce Glacken.
+---
+{#- One photo per line, in display order. Optional alt text after a "|". -#}
+{% gallery %}
+photo-2.jpg
+photo-9.jpg
+photo-5.jpg
+photo-3.jpg
+photo-1.jpg
+photo-8.jpg
+photo-12.jpg
+photo-4.jpg
+photo-15.jpg
+photo-10.jpg
+photo-6.jpg
+photo-11.jpg
+photo-13.jpg
+photo-14.jpg
+photo-16.jpg
+photo-21.jpg
+photo-20.jpg
+photo-19.jpg
+photo-17.jpg
+photo-23.jpg
+photo-18.jpg
+photo-22.jpg
+photo-24.jpg
+{% endgallery %}
