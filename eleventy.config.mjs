@@ -63,6 +63,22 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addShortcode("year", () => String(new Date().getFullYear()));
 
+  // Full-page background photo: preloads a WebP version (~60% smaller than the
+  // JPEG) and swaps it in via image-set(), keeping the JPEG in style.css as the
+  // fallback for browsers without image-set() type() support.
+  eleventyConfig.addShortcode("heroBackground", async function (file) {
+    const meta = await Image(`images/${file}`, {
+      widths: ["auto"],
+      formats: ["webp"],
+      outputDir: "_site/img/",
+      urlPath: "/img/",
+      fixOrientation: true,
+    });
+    const url = meta.webp[0].url;
+    return `<link rel="preload" as="image" href="${url}" type="image/webp">\n` +
+      `  <style>body.home { background-image: image-set(url("${url}") type("image/webp"), url("/images/${file}") type("image/jpeg")); }</style>`;
+  });
+
   // {% gallery %} … {% endgallery %} — one photo per line, as a filename in
   // images/, optionally followed by " | alt text". Aspect ratios are read from
   // the files themselves.

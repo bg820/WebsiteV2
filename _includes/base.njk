@@ -24,10 +24,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display&display=swap"></noscript>
-  {%- if preloadImage %}
-  <link rel="preload" as="image" href="{{ preloadImage }}">
-  {%- endif %}
   <link rel="stylesheet" href="/style.css">
+  {%- if hero %}
+  {% heroBackground hero %}
+  {%- endif %}
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
 {{ content | safe }}
