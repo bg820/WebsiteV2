@@ -255,21 +255,7 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 1px 2px rgba(58,42,29,.2), 0 8px 14px -8px rgba(58,42,29,.35);
 }
 .coffee-card .yay { font: 400 1.25rem/1 var(--display); color: var(--glory); margin-bottom: .45rem; }
-.coffee-card strong { font-weight: 500; white-space: nowrap; }
-.coffee-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .9rem; }
-.coffee-actions > * {
-  font: 500 .82rem var(--mono);
-  color: var(--ink);
-  background: var(--paper);
-  border: 1.5px solid var(--ink);
-  border-radius: 999px;
-  padding: .35rem .85rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background .15s, transform .15s;
-}
-.coffee-actions > *:hover { background: var(--yolk); transform: rotate(-2deg); }
-.coffee-actions .copy.done { background: #d6de9f; }
+.coffee-card p a { font-weight: 500; white-space: nowrap; }
 .coffee-card .close {
   position: absolute;
   top: .35rem;
