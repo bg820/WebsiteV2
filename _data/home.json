@@ -1,6 +1,12 @@
 {
   "tagline": "Engineer building the systems that allow for impactful work. Also: pots, photos, and noticing small things.",
 
+  "photo": {
+    "file": "bryce-laughing.jpg",
+    "alt": "Bryce mid-laugh, chin on a fist, in a white cap with a yellow brim",
+    "caption": "hi, it's me!"
+  },
+
   "currently": {
     "headline": "Settling into Berkeley and finding cool humans.",
     "body": "New in town and looking for people to walk, talk, and throw pots with. If you like the vibe, say hi."

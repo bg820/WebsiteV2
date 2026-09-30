@@ -177,6 +177,23 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 1px 2px rgba(58,42,29,.18), 0 10px 18px -8px rgba(58,42,29,.3);
 }
 .label { font: 500 .74rem var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+
+/* A photo of me taped to the note's corner, hanging off the edge. */
+.me-print {
+  float: right;
+  position: relative;
+  z-index: 2;
+  width: 124px;
+  margin: -2.9rem -3.3rem .6rem 1rem;
+  padding: 7px 7px 8px;
+  background: var(--paper);
+  transform: rotate(5deg);
+  box-shadow: 0 3px 9px rgba(58,42,29,.25);
+  transition: transform .25s;
+}
+.me-print:hover { transform: rotate(1deg) scale(1.04); }
+.me-print img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.me-print figcaption { margin: 7px 2px 0; font: 400 .72rem/1.2 var(--mono); color: var(--ink-soft); }
 .sticky .big { font: 400 1.5rem/1.2 var(--display); margin: .35rem 0 .6rem; }
 
 .coffee {
@@ -611,6 +628,7 @@ body.gallery .site-footer { margin-top: 4rem; margin-inline: max(1.5rem, calc((1
   .intro { flex-direction: column; align-items: flex-start; gap: 1.8rem; padding-top: 3rem; }
   .hello { width: 220px; }
   .door { grid-template-columns: 1fr; gap: 2.4rem; }
+  .me-print { margin-right: -1.2rem; }
   .section-head { margin-top: 4.5rem; }
   .site-footer { grid-template-columns: 1fr; gap: .6rem; }
 }

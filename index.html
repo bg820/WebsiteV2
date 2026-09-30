@@ -26,6 +26,11 @@ ogDescription: Engineer building the systems that allow for impactful work.
     <div class="door">
       <section class="sticky" aria-label="Currently">
         <span class="magnet" style="--m: var(--cobalt)"></span>
+        <figure class="me-print">
+          <span class="tape"></span>
+          {% webp home.photo.file, home.photo.alt, "130px", "300,600" %}
+          <figcaption>{{ home.photo.caption }}</figcaption>
+        </figure>
         <span class="label">Currently</span>
         <p class="big">{{ home.currently.headline }}</p>
         <p>{{ home.currently.body }}</p>
