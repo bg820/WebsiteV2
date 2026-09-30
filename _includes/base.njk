@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Literata:opsz,wght@7..72,400;7..72,500&family=Young+Serif&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Literata:opsz,wght@7..72,400;7..72,500&family=Young+Serif&display=swap"></noscript>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="{{ '/style.css' | bust }}">
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
 {{ content | safe }}

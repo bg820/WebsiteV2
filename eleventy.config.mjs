@@ -1,3 +1,5 @@
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 import Image from "@11ty/eleventy-img";
 
 // Gallery photos are resized at build time: the grid downloads thumbnail-sized
@@ -78,6 +80,14 @@ export default function (eleventyConfig) {
   ]) {
     eleventyConfig.addPassthroughCopy(path);
   }
+
+  // Adds a content hash to a local asset's URL ("/style.css" ->
+  // "/style.css?v=1a2b3c4d"). Cloudflare lets browsers cache CSS and JS for
+  // hours, so without this a returning visitor gets new HTML with stale CSS.
+  eleventyConfig.addFilter("bust", (url) => {
+    const hash = createHash("sha1").update(readFileSync(`.${url}`)).digest("hex").slice(0, 8);
+    return `${url}?v=${hash}`;
+  });
 
   eleventyConfig.addShortcode("year", () => String(new Date().getFullYear()));
 
