@@ -3,37 +3,101 @@ layout: base.njk
 bodyClass: home
 description: Engineer building the systems that allow for impactful work. Interested in AI safety, effective altruism, veganism, yoga, ceramics, and landscape photography.
 ogDescription: Engineer building the systems that allow for impactful work.
-hero: hero.jpg
 ---
+{#- Words, events, shelf pieces, and photos all live in _data/home.json. -#}
+<div class="wrap">
+  <header class="intro">
+    <div class="hello" role="img" aria-label="A name tag that says: Hello, my name is Bryce!">
+      <b>HELLO</b><small>my name is</small>
+      <div class="name">{% webp "cutouts/bryce-logo.png", "", "220px", "300,600" %}</div>
+    </div>
+    <div>
+      <h1 class="wordmark" aria-label="Bryce Glacken">br<span class="dim">yce</span><span class="dot">.</span>gl<span class="dim">acken</span></h1>
+      <p class="tagline">{{ home.tagline }}</p>
+      <nav class="links" aria-label="Elsewhere">
+        <a href="mailto:howdy@br.gl">email</a>
+        <a href="https://www.linkedin.com/in/bryce-glacken/" target="_blank" rel="noopener">linkedin</a>
+        <a href="https://instagram.com/gecyrb" target="_blank" rel="noopener">instagram</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
-    <header>
-      <h1 class="wordmark">br<span class="dim">yce</span>.gl<span class="dim">acken</span></h1>
-      <p class="tagline">Engineer building the systems that allow for impactful work.</p>
-    </header>
+    <div class="door">
+      <section class="sticky" aria-label="Currently">
+        <span class="magnet" style="--m: var(--cobalt)"></span>
+        <span class="label">Currently</span>
+        <p class="big">{{ home.currently.headline }}</p>
+        <p>{{ home.currently.body }}</p>
+        <a class="coffee" href="mailto:howdy@br.gl?subject=Coffee%3F" aria-expanded="false" aria-controls="coffee-card">
+          <svg class="cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3"/></svg>
+          let's get coffee
+        </a>
+        <div class="coffee-card" id="coffee-card" hidden>
+          <button class="close" type="button" aria-label="Close">&times;</button>
+          <p class="yay">Yay!</p>
+          <p>Send me a note at <strong>howdy@br.gl</strong> with a bit about you and a café you like.</p>
+          <div class="coffee-actions">
+            <button class="copy" type="button" data-email="howdy@br.gl">copy email</button>
+            <a class="open-mail" href="mailto:howdy@br.gl?subject=Coffee%3F&amp;body=Hi%20Bryce!%0A%0AI'm%20___%20and%20I%20found%20your%20site%20through%20___.%0A%0AA%20caf%C3%A9%20I%20like%3A%20___%0A">open email app</a>
+          </div>
+        </div>
+      </section>
 
-    <hr>
-
-    <div class="contact">
-      <a href="mailto:howdy@br.gl">Email</a>
-      <a href="https://www.linkedin.com/in/bryce-glacken/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://instagram.com/gecyrb" target="_blank" rel="noopener">Instagram</a>
+      <section class="card" aria-labelledby="care">
+        <span class="tape" style="--r: 3deg; left: 78%"></span>
+        <h2 id="care">Things I care about</h2>
+        <ul>
+          {%- for item in home.interests %}
+          <li{% if item.sub %} class="sub"{% endif %}>{% if item.url %}<a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.label }}</a>{% else %}{{ item.label }}{% endif %}{% if item.note %} <em>({{ item.note }})</em>{% endif %}</li>
+          {%- endfor %}
+        </ul>
+      </section>
     </div>
 
-    <hr>
+    <section aria-labelledby="make">
+      <div class="section-head"><h2 class="tape-label" id="make">Things I make</h2><p>with my hands</p></div>
+      <div class="shelf-wrap">
+        <div class="shelf">
+          {%- asyncEach piece in home.shelf %}
+          <div class="piece{% if piece.optional %} optional{% endif %}" style="--s: {{ piece.scale }}">{% webp piece.file, piece.alt, "(max-width: 560px) 30vw, 260px", "240,480" %}{% if piece.books %}<span class="books" aria-hidden="true"><i></i><i></i></span>{% endif %}</div>
+          {%- endeach %}
+        </div>
+      </div>
+      <div class="board"></div>
+      <p class="see-all"><a class="pill" href="/ceramics/">more ceramics <span aria-hidden="true">&rarr;</span></a></p>
+    </section>
 
-    <section class="interests">
-      <h2>Interests</h2>
-      <ul>
-        <li><a href="https://ai-2027.com/" target="_blank" rel="noopener">AI safety</a><span class="tag tag-read">article</span>
-          <ul class="sub-interests">
-            <li><a href="https://bg820.github.io/ais-hiring-snapshot" target="_blank" rel="noopener">AIS hiring snapshot</a><span class="tag tag-mine">mine</span></li>
-          </ul>
-        </li>
-        <li><a href="https://www.effectivealtruism.org/articles/introduction-to-effective-altruism" target="_blank" rel="noopener">Effective altruism</a><span class="tag tag-read">article</span></li>
-        <li><a href="https://80000hours.org/problem-profiles/factory-farming/" target="_blank" rel="noopener">Veganism</a><span class="tag tag-read">article</span></li>
-        <li>Yoga</li>
-        <li><a href="/ceramics/">Ceramics</a><span class="tag tag-mine">mine</span></li>
-        <li><a href="/photography/">Photography</a><span class="tag tag-mine">mine</span></li>
-      </ul>
+    <section aria-labelledby="notice">
+      <div class="section-head"><h2 class="tape-label" id="notice">Things I notice</h2><p>with a camera</p></div>
+      <div class="prints">
+        {%- asyncEach print in home.prints %}
+        <figure class="print">
+          {%- if loop.index % 2 %}<span class="tape"{% if loop.index == 3 %} style="--r: 3deg"{% endif %}></span>{% else %}<span class="magnet" style="--m: var(--{{ 'olive' if loop.index == 2 else 'glory' }})"></span>{% endif -%}
+          {% webp print.file, print.alt, "(max-width: 820px) 45vw, 220px", "400,800", 'loading="lazy"' %}<figcaption class="cap">{{ print.caption }}</figcaption></figure>
+        {%- endeach %}
+      </div>
+      <p class="see-all"><a class="pill" href="/photography/">more photos <span aria-hidden="true">&rarr;</span></a></p>
+    </section>
+
+    <section aria-labelledby="seen">
+      <div class="section-head"><h2 class="tape-label" id="seen">You may have seen me at</h2><p>say hi next time</p></div>
+      <div class="stubs">
+        {%- for ev in home.events %}
+        <div class="stub s-{{ ev.color }}{% if ev.ribbon %} award{% endif %}">
+          <div class="main">
+            <div class="kind">{{ ev.kind }}</div>
+            <div class="ev">{{ ev.name }}</div>
+            <div class="meta">{{ ev.dates }}{% if ev.place %}<br>{{ ev.place }}{% endif %}</div>
+            {%- if ev.stamp %}<span class="ink-stamp">{{ ev.stamp | safe }}</span>{% endif %}
+            {%- if ev.ribbon %}{% include "ribbon.svg.njk" %}{% endif %}
+          </div>
+          <div class="foot"><span>{{ ev.role }}</span><span>No. {% if loop.index < 10 %}00{% elif loop.index < 100 %}0{% endif %}{{ loop.index }}</span></div>
+        </div>
+        {%- endfor %}
+      </div>
     </section>
   </main>
+</div>
+
+<script src="/home.js" defer></script>

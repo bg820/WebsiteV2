@@ -2,13 +2,12 @@
 layout: base.njk
 bodyClass: gallery
 ---
-  <nav class="site-nav">
-    <a href="/">← Bryce Glacken</a>
-  </nav>
-
-  <header class="photo-header">
-    <h1>{{ title }}</h1>
-  </header>
+  <div class="gallery-top">
+    <header class="photo-header">
+      <h1 class="tape-label">{{ title }}</h1>
+    </header>
+    <a class="pill" href="/">&larr; bryce.glacken</a>
+  </div>
 
   <main>
 {{ content | safe }}

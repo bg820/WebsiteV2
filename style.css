@@ -4,289 +4,493 @@
   padding: 0;
 }
 
+/* Palette: speckled clay, kiln brown, and glaze colors from the pots. */
 :root {
-  --bg: #f8f6f1;
-  --fg: #1c1b18;
-  --muted: #706e67;
-  --rule: #dedad2;
-  --accent: #6b5744;
+  --clay: #f1e7d3;
+  --paper: #fffcf5;
+  --ink: #3a2a1d;
+  --ink-soft: #6e5a45;
+  --bisque: #b9a27a;
+  --wood-dark: #7d5a33;
+  --tape: rgba(236, 222, 176, .88);
+  --cobalt: #5847c8;
+  --yolk: #f2c12e;
+  --glory: #c8358a;
+  --olive: #7e8f2b;
+  --cosmos: #e0601c;
+
+  --display: "Young Serif", Georgia, serif;
+  --body: "Literata", Georgia, serif;
+  --mono: "DM Mono", ui-monospace, monospace;
 }
 
 html {
-  font-size: 16px;
-  background: var(--bg);
+  background: var(--clay);
+  overflow-x: clip; /* things peek off the edges on purpose */
 }
 
 body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 300;
-  line-height: 1.6;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  padding: max(4rem, 8vh) 2rem 3rem;
+  background: var(--clay) url(/images/speckle.png);
+  color: var(--ink);
+  font: 400 1.05rem/1.65 var(--body);
+  padding: 0 16px 3rem;
+  overflow-x: clip;
 }
 
-/* ── Site Nav ── */
-
-.site-nav {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  z-index: 10;
-}
-
-.site-nav a {
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-/* ── Layout ── */
-
-main {
-  max-width: 580px;
-  width: 100%;
-  margin: 0 auto;
-  flex: 1;
-}
-
-footer {
-  max-width: 580px;
-  width: 100%;
-  margin: 2rem auto 0;
-  display: flex;
-  justify-content: flex-end;
-  font-size: 0.72rem;
-  color: var(--muted);
-  letter-spacing: 0.06em;
-}
-
-/* ── Rules ── */
-
-hr {
-  border: none;
-  border-top: 1px solid var(--rule);
-  margin: 2.75rem 0;
-}
-
-/* ── Header ── */
-
-h1 {
-  font-family: "DM Serif Display", Georgia, serif;
-  font-size: clamp(3rem, 9vw, 5.25rem);
-  font-weight: 400;
-  line-height: 1.04;
-  letter-spacing: -0.025em;
-  margin-bottom: 0.65rem;
-}
-
-.wordmark {
-  white-space: nowrap;
-  font-size: clamp(2rem, 9.5vw, 4.3rem);
-  /* Where supported, scale to the home panel's width (the name renders about
-     7em wide) so it always fills one line of it. */
-  font-size: clamp(2rem, 14cqi, 4.3rem);
-}
-
-.wordmark .dim {
-  opacity: 0.4;
-}
-
-.tagline {
-  color: var(--muted);
-  font-size: 0.9rem;
-  font-style: italic;
-  font-weight: 300;
-  max-width: 42ch;
-  line-height: 1.55;
-}
-
-/* ── Links ── */
+::selection { background: var(--yolk); }
 
 a {
   color: inherit;
-  text-decoration: none;
-  position: relative;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: var(--bisque);
+}
+a:hover { text-decoration-color: var(--cosmos); }
+a:focus-visible, button:focus-visible {
+  outline: 2px dashed var(--cosmos);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
-a::after {
-  content: '';
+.wrap { max-width: 980px; margin: 0 auto; position: relative; }
+
+/* ── Bits of stuff: tape, magnets, pill buttons ── */
+
+.tape {
   position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: currentColor;
-  transition: width 0.2s ease;
+  top: -12px;
+  left: 50%;
+  width: 86px;
+  height: 26px;
+  z-index: 2;
+  transform: translateX(-50%) rotate(var(--r, -4deg));
+  background: var(--tape);
+  clip-path: polygon(3% 0, 97% 0, 100% 18%, 97% 36%, 100% 54%, 97% 72%, 100% 100%, 3% 100%, 0 82%, 3% 64%, 0 46%, 3% 28%, 0 10%);
 }
 
-a:hover::after { width: 100%; }
-
-/* ── Contact ── */
-
-.contact {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.2rem 2.25rem;
+.magnet {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+  background: var(--m, var(--cobalt));
+  box-shadow: inset -3px -4px 0 rgba(0,0,0,.2), inset 3px 3px 0 rgba(255,255,255,.25), 0 3px 4px rgba(58,42,29,.3);
 }
 
-.contact a {
-  font-size: 0.88rem;
-  color: var(--accent);
-  letter-spacing: 0.01em;
-}
-
-/* ── Interests ── */
-
-.interests h2 {
-  font-family: "DM Sans", sans-serif;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.9rem;
-}
-
-.interests ul { list-style: none; }
-
-.interests li {
-  font-size: 0.92rem;
-  padding: 0.22rem 0;
-  display: flex;
-  align-items: baseline;
-  gap: 0.55rem;
-}
-
-.interests li::before {
-  content: "–";
-  color: var(--muted);
-  flex-shrink: 0;
-}
-
-.interests li:has(.sub-interests) {
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
-.sub-interests {
-  width: 100%;
-  list-style: none;
-  margin-top: 0.1rem;
-  margin-bottom: 0.1rem;
-}
-
-.sub-interests li {
-  font-size: 0.82rem;
-  padding: 0.08rem 0;
-  padding-left: 1.1rem;
-  display: flex;
-  gap: 0.4rem;
-  align-items: baseline;
-}
-
-.sub-interests li::before {
-  content: "↳";
-  font-size: 0.72rem;
-  color: var(--muted);
-  flex-shrink: 0;
-}
-
-/* Tags differentiating own work ("mine") from external reads ("article") */
-.tag {
-  font-size: 0.55rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border: 1px solid var(--rule);
+.pill {
+  font: 500 .9rem var(--mono);
+  text-decoration: none;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
   border-radius: 999px;
-  padding: 0.08rem 0.45rem;
-  margin-left: 0.6rem;
-  align-self: center;
-  white-space: nowrap;
+  padding: .5rem 1.1rem;
+  box-shadow: 2px 3px 0 var(--ink);
+  transition: transform .15s, box-shadow .15s, background .15s;
+}
+.pill:hover {
+  background: var(--yolk);
+  transform: translate(-1px, -1px) rotate(-2deg);
+  box-shadow: 3px 4px 0 var(--ink);
 }
 
-.tag-mine {
-  color: var(--accent);
-  border-color: var(--accent);
+/* Section labels: a strip of masking tape. Also used for gallery titles. */
+.tape-label {
+  display: inline-block;
+  font: 400 1.45rem/1 var(--display);
+  background: var(--tape);
+  padding: .55rem 1.2rem .5rem;
+  transform: rotate(-1.2deg);
+  clip-path: polygon(1.5% 0, 98.5% 0, 100% 20%, 98.5% 40%, 100% 60%, 98.5% 80%, 100% 100%, 1.5% 100%, 0 80%, 1.5% 60%, 0 40%, 1.5% 20%);
 }
 
 /* ═══════════════════════════════
-   HOME — photo background
+   HOME
    ═══════════════════════════════ */
 
-body.home {
-  /* fallback color shows when no image is present */
-  background: #1e1710 url('/images/hero.jpg') center / cover no-repeat;
-  background-attachment: fixed;
+/* ── Intro: name tag + wordmark ── */
 
-  --fg: #f0ede8;
-  --muted: rgba(255, 255, 255, 0.5);
-  --rule: rgba(255, 255, 255, 0.15);
-  --accent: rgba(255, 255, 255, 0.8);
-
-  color: var(--fg);
+.intro {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 4.5rem 0 1rem;
 }
 
-body.home main,
-body.home footer {
+.hello {
+  flex: none;
+  width: 250px;
+  border-radius: 14px;
+  background: var(--glory);
+  color: #fff;
+  text-align: center;
+  padding: 11px 0 14px;
+  transform: rotate(-5deg);
+  box-shadow: 0 4px 10px rgba(58,42,29,.22);
+  transition: transform .3s;
+}
+.hello:hover { transform: rotate(-2deg); }
+.hello b { display: block; font: 400 1.9rem/1 var(--display); letter-spacing: .06em; }
+.hello small { display: block; font: 500 .72rem/1.5 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.hello .name { background: var(--paper); margin-top: 9px; padding: 14px 18px 12px; }
+.hello .name img { display: block; width: 100%; height: auto; }
+
+.wordmark {
+  font: 400 clamp(2.6rem, 7vw, 4.3rem)/1.02 var(--display);
+  letter-spacing: -0.015em;
+}
+.wordmark .dim { color: #b39c78; }
+.wordmark .dot { color: var(--cosmos); }
+
+.tagline { font-size: 1.12rem; color: var(--ink-soft); margin-top: .6rem; max-width: 40ch; }
+
+.links { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.1rem; }
+.links a {
+  font: 500 .82rem var(--mono);
+  text-decoration: none;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  padding: .3rem .85rem;
+  background: var(--paper);
+  transition: background .15s, transform .15s;
+}
+.links a:hover { background: var(--yolk); transform: rotate(-3deg); }
+
+/* ── The door: sticky note + index card ── */
+
+.door {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 2rem;
+  margin-top: 3.2rem;
+  align-items: start;
+}
+
+.sticky {
   position: relative;
-  z-index: 1;
+  background: #ffe382;
+  padding: 1.7rem 1.6rem 1.5rem;
+  transform: rotate(-2deg);
+  box-shadow: 0 1px 2px rgba(58,42,29,.18), 0 10px 18px -8px rgba(58,42,29,.3);
+}
+.label { font: 500 .74rem var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.sticky .big { font: 400 1.5rem/1.2 var(--display); margin: .35rem 0 .6rem; }
+
+.coffee {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1rem;
+  font: 500 .92rem var(--mono);
+  text-decoration: none;
+  background: var(--ink);
+  color: #ffe382;
+  padding: .65rem 1.05rem;
+  border-radius: 4px;
+  transition: transform .15s;
+}
+.coffee:hover { transform: rotate(-2deg) scale(1.03); }
+.coffee[aria-expanded="true"] { transform: rotate(-2deg); }
+.cup { width: 18px; height: 18px; }
+
+/* The little card that flips open under the coffee button. */
+.coffee-card {
+  position: relative;
+  margin: 1.1rem -.3rem 0;
+  background: var(--paper);
+  padding: 1.1rem 1.2rem;
+  transform: rotate(1.2deg);
+  transform-origin: top center;
+  box-shadow: 0 1px 2px rgba(58,42,29,.2), 0 8px 14px -8px rgba(58,42,29,.35);
+  animation: flip-open .35s cubic-bezier(.3,1.3,.5,1);
+}
+.coffee-card[hidden] { display: none; }
+@keyframes flip-open {
+  from { opacity: 0; transform: rotate(1.2deg) perspective(600px) rotateX(-70deg); }
+}
+.coffee-card .yay { font: 400 1.25rem/1 var(--display); color: var(--glory); margin-bottom: .45rem; }
+.coffee-card strong { font-weight: 500; white-space: nowrap; }
+.coffee-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .9rem; }
+.coffee-actions .copy,
+.coffee-actions .open-mail {
+  font: 500 .82rem var(--mono);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  padding: .35rem .85rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .15s, transform .15s;
+}
+.coffee-actions .copy:hover,
+.coffee-actions .open-mail:hover { background: var(--yolk); transform: rotate(-2deg); }
+.coffee-actions .copy.done { background: #d6de9f; }
+.coffee-card .close {
+  position: absolute;
+  top: .35rem;
+  right: .5rem;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  font: 400 1.3rem/1 var(--body);
+  color: var(--ink-soft);
+}
+.coffee-card .close:hover { background: rgba(58,42,29,.08); color: var(--ink); }
+
+.card {
+  position: relative;
+  background: var(--paper);
+  padding: 1.3rem 1.6rem 1rem;
+  transform: rotate(1deg);
+  background-image: repeating-linear-gradient(transparent 0 31px, rgba(46,154,150,.2) 31px 32px);
+  background-position: 0 58px;
+  box-shadow: 0 3px 10px rgba(58,42,29,.16);
+}
+.card::before { content: ""; position: absolute; left: 0; right: 0; top: 56px; height: 1.5px; background: rgba(200,53,138,.45); }
+.card h2 { font: 400 1.3rem/1.2 var(--display); margin-bottom: 1.25rem; }
+.card ul { list-style: none; line-height: 32px; }
+.card li { position: relative; padding-left: 1.75rem; }
+.card li.sub { margin-left: 1.75rem; }
+/* a box, ticked in blue pen */
+.card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 13px;
+  height: 13px;
+  border: 1.5px solid var(--ink-soft);
+  border-radius: 2px;
+}
+.card li::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 3px;
+  width: 19px;
+  height: 17px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 18'%3E%3Cpath d='M2.5 10c2 1.4 3.4 3.3 4.7 5.2C10 9.6 13.4 5.2 18 1.8' fill='none' stroke='%235847c8' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+.card em { font: 400 .76rem var(--mono); color: var(--ink-soft); font-style: normal; white-space: nowrap; }
+
+/* ── Sections ── */
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin: 5.5rem 0 2rem;
+}
+.section-head p { color: var(--ink-soft); }
+
+.see-all { display: flex; justify-content: flex-end; margin-top: 2.4rem; }
+
+/* ── Things I make: the shelf ── */
+
+/* Every piece is sized from one unit (--u), so they keep their real-life
+   proportions at any width. --s (from home.json's "scale") is each piece's
+   height relative to the vases. */
+.shelf-wrap { container-type: inline-size; }
+.shelf {
+  --u: min(22cqi, 205px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2.2cqi;
+}
+.shelf .piece {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: none;
+  transform-origin: bottom center;
+}
+.shelf .piece:hover { animation: wobble .6s ease-in-out; }
+.shelf img {
+  display: block;
+  height: calc(var(--u) * var(--s));
+  width: auto;
+  filter: drop-shadow(0 5px 3px rgba(58,42,29,.28));
+}
+@keyframes wobble {
+  25% { transform: rotate(-5deg); }
+  60% { transform: rotate(3deg); }
+  85% { transform: rotate(-1deg); }
+}
+@container (max-width: 560px) {
+  .shelf { --u: 30cqi; gap: 2.5cqi; }
+  .shelf .optional { display: none; }
 }
 
-body.home main {
-  flex: none; /* hug the content rather than stretching down to the footer */
-  container-type: inline-size;
-  background: rgba(10, 8, 6, 0.45);
-  padding: 2.5rem 3rem;
-  border-radius: 3px;
+/* Two little books to give one vase a boost. */
+.books { display: block; width: calc(var(--u) * .78); }
+.books i { display: block; height: calc(var(--u) * .1); border-radius: 2px; box-shadow: inset 0 -2px 0 rgba(0,0,0,.15); }
+.books i:first-child { background: #7d8a5a; width: 88%; margin-left: 8%; }
+.books i:last-child { background: #9b6b52; }
+.books i::after {
+  content: "";
+  display: block;
+  height: 100%;
+  margin: 0 6px;
+  border-top: 1.5px solid rgba(255,248,230,.55);
+  border-bottom: 1.5px solid rgba(255,248,230,.35);
+  transform: scaleY(.45);
 }
 
-body.home footer {
-  margin-top: auto;
-  padding-top: 2rem;
+.board {
+  position: relative;
+  height: 18px;
+  background: linear-gradient(#bf915a, var(--wood-dark));
+  border-radius: 2px;
+  box-shadow: 0 10px 12px -6px rgba(58,42,29,.45);
+}
+.board::before,
+.board::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  width: 14px;
+  height: 40px;
+  background: var(--wood-dark);
+  clip-path: polygon(0 0, 100% 0, 100% 28%, 0 100%);
+}
+.board::before { left: 11%; }
+.board::after { right: 11%; }
+
+/* ── Things I notice: taped prints ── */
+
+.prints { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; }
+.print {
+  position: relative;
+  display: block;
+  background: var(--paper);
+  padding: 9px 9px 10px;
+  box-shadow: 0 3px 9px rgba(58,42,29,.22);
+  transition: transform .25s;
+}
+.print img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.print .cap { display: block; margin: 9px 3px 0; font: 400 .8rem/1.25 var(--mono); color: var(--ink-soft); }
+.print:nth-child(1) { transform: rotate(-3deg); }
+.print:nth-child(2) { transform: rotate(2deg) translateY(14px); }
+.print:nth-child(3) { transform: rotate(-1.5deg) translateY(-4px); }
+.print:nth-child(4) { transform: rotate(3deg) translateY(10px); }
+.print:hover { transform: rotate(0) scale(1.04); z-index: 3; }
+
+/* ── You may have seen me at: ticket stubs ── */
+
+.stubs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.3rem; }
+.stub {
+  --bg: #f7dc85;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 178px;
+  background: var(--bg);
+  border-radius: 6px;
+  font-family: var(--mono);
+  transition: transform .25s;
+  /* the two half-circle notches at the tear line */
+  -webkit-mask:
+    radial-gradient(circle 9px at 0 calc(100% - 44px), #0000 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 9px at 100% calc(100% - 44px), #0000 98%, #000) right / 51% 100% no-repeat;
+          mask:
+    radial-gradient(circle 9px at 0 calc(100% - 44px), #0000 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 9px at 100% calc(100% - 44px), #0000 98%, #000) right / 51% 100% no-repeat;
+}
+.stub:nth-child(4n+1) { transform: rotate(-3deg); }
+.stub:nth-child(4n+2) { transform: rotate(2deg) translateY(12px); }
+.stub:nth-child(4n+3) { transform: rotate(-1deg); }
+.stub:nth-child(4n+4) { transform: rotate(3deg) translateY(6px); }
+.stub:hover { transform: rotate(0) translateY(-4px); }
+.stub .main { padding: 1rem 1.1rem .7rem; }
+.stub .kind { font-size: .68rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+.stub .ev { font: 400 1.3rem/1.12 var(--display); margin: .3rem 0 .4rem; }
+.stub .meta { font-size: .8rem; line-height: 1.45; }
+.stub .foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 1.1rem;
+  border-top: 2px dashed rgba(58,42,29,.32);
+  font-size: .76rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.s-yolk { --bg: #f7dc85; }
+.s-cobalt { --bg: #cfc9f3; }
+.s-glory { --bg: #f3c4dd; }
+.s-olive { --bg: #d6de9f; }
+
+.ink-stamp {
+  position: absolute;
+  left: 50%;
+  bottom: 13px;
+  margin-left: -16px;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--glory);
+  border-radius: 50%;
+  color: var(--glory);
+  font: 500 .6rem/1.1 var(--mono);
+  letter-spacing: .04em;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(-14deg);
+  opacity: .82;
 }
 
-/* disable fixed attachment on iOS (it breaks there) */
-@media (max-width: 768px) {
-  body.home { background-attachment: scroll; }
+/* A silver ribbon for placing, with a glint across the stub on hover. */
+.award .ev { padding-right: 50px; }
+.ribbon {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 52px;
+  transform: rotate(6deg);
+  transform-origin: 50% 8%;
+  filter: drop-shadow(0 2px 2px rgba(58,42,29,.25));
+  transition: transform .5s cubic-bezier(.3,1.6,.5,1);
 }
+.award:hover .ribbon { transform: rotate(-4deg); }
+.award::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,.55) 50%, transparent 62%) no-repeat;
+  background-size: 250% 100%;
+  background-position: 130% 0;
+  transition: background-position .9s ease;
+}
+.award:hover::after { background-position: -30% 0; }
 
 /* ═══════════════════════════════
    GALLERY — photo grid (photography, ceramics)
    ═══════════════════════════════ */
 
-body.gallery {
-  padding: max(3rem, 5vh) 3px 3px;
-}
+body.gallery { padding: 0 3px 3rem; }
 
-.photo-header {
-  padding: max(3rem, 5vh) 2rem 2rem;
+.gallery-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2.5rem 1.5rem 2.2rem;
 }
-
-.photo-header h1 {
-  font-family: "DM Serif Display", Georgia, serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-}
-
-body.gallery main {
-  max-width: none;
-  margin: 0;
-}
-
-body.gallery footer {
-  max-width: none;
-  padding: 1.5rem 2rem 0;
-}
+.photo-header h1 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); padding: .6rem 1.4rem .5rem; transform: rotate(-1.5deg); }
 
 /* Keep the page width steady when the lightbox locks scrolling, so the
    photos behind it don't jump. */
@@ -309,15 +513,14 @@ html:has(.lightbox[open]) { overflow: hidden; }
   height: 400px;
   aspect-ratio: var(--r);
   max-width: 100%;
-  background: var(--rule); /* placeholder while the photo loads */
+  background: var(--bisque); /* placeholder while the photo loads */
   cursor: zoom-in;
 }
 
-.photo-grid a::after { content: none; }
-
 .photo-grid a:focus-visible {
-  outline: 2px solid var(--fg);
+  outline: 2px solid var(--ink);
   outline-offset: 2px;
+  border-radius: 0;
 }
 
 .photo-grid img {
@@ -326,7 +529,6 @@ html:has(.lightbox[open]) { overflow: hidden; }
   height: 100%;
   object-fit: cover;
 }
-
 
 /* ── Lightbox ── */
 
@@ -338,7 +540,7 @@ html:has(.lightbox[open]) { overflow: hidden; }
   margin: 0;
   border: 0;
   padding: 2rem;
-  background: rgba(8, 7, 6, 0.94);
+  background: rgba(24, 17, 11, .94);
   cursor: zoom-out;
   opacity: 0;
   transition:
@@ -369,14 +571,60 @@ html:has(.lightbox[open]) { overflow: hidden; }
   box-shadow: 0 12px 50px rgba(0, 0, 0, 0.5);
 }
 
-@media (max-width: 480px) {
-  .lightbox { padding: 1rem; }
+/* ═══════════════════════════════
+   404
+   ═══════════════════════════════ */
+
+.lost { max-width: 980px; margin: 0 auto; padding: 6rem 0 2rem; }
+.lost h1 { font: 400 clamp(3rem, 10vw, 5rem)/1 var(--display); }
+.lost .tagline { margin-top: 1rem; }
+
+/* ── Footer (all pages) ── */
+
+.site-footer {
+  max-width: 980px;
+  margin: 6rem auto 0;
+  padding-top: 1.6rem;
+  border-top: 1.5px dashed var(--bisque);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  font-size: .9rem;
+  color: var(--ink-soft);
+}
+.site-footer .fine { font: 400 .78rem var(--mono); }
+body.gallery .site-footer { margin-top: 4rem; margin-inline: max(1.5rem, calc((100% - 980px) / 2)); }
+
+/* ── Motion and smaller screens ── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
-/* ── Mobile (global) ── */
+@media (max-width: 820px) {
+  .prints { grid-template-columns: repeat(2, 1fr); }
+  .stubs { grid-template-columns: repeat(2, 1fr); gap: 1.6rem 1.2rem; }
+}
+
+@media (max-width: 680px) {
+  .intro { flex-direction: column; align-items: flex-start; gap: 1.8rem; padding-top: 3rem; }
+  .hello { width: 220px; }
+  .door { grid-template-columns: 1fr; gap: 2.4rem; }
+  .section-head { margin-top: 4.5rem; }
+  .site-footer { grid-template-columns: 1fr; gap: .6rem; }
+}
 
 @media (max-width: 480px) {
-  body { padding: 3rem 1.4rem 2rem; }
-  body.home main { padding: 2rem 1.5rem; }
-  .site-nav { top: 1.25rem; right: 1.25rem; }
+  .lightbox { padding: 1rem; }
+  .gallery-top { padding: 2rem 1rem 1.6rem; }
+}
+
+@media (max-width: 440px) {
+  .stubs { grid-template-columns: 1fr; }
+  .stub { min-height: 150px; }
+  .stub:nth-child(odd) { transform: rotate(-1.5deg); }
+  .stub:nth-child(even) { transform: rotate(1.5deg); }
+  .stub:hover { transform: rotate(0) translateY(-4px); }
+  .print .cap { font-size: .74rem; }
 }

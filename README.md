@@ -23,14 +23,37 @@ Build command: `npm run build` · Output directory: `_site`
 ## Project layout
 
 - `_includes/base.njk` — shared page shell (head, meta tags, fonts, footer)
-- `_includes/gallery.njk` — gallery page layout (nav, heading, lightbox)
-- `index.html` — home page
+- `_includes/gallery.njk` — gallery page layout (title, back link, lightbox)
+- `_includes/ribbon.svg.njk` — the silver ribbon drawn on award stubs
+- `index.html` — home page layout
+- `_data/home.json` — everything the home page says (see below)
+- `home.js` — the "let's get coffee" card
 - `photography.html` → `/photography/` — photo gallery
 - `ceramics.html` → `/ceramics/` — ceramics gallery
 - `style.css` — all styles (shared across pages)
 - `gallery.js` — justified row layout + lightbox
 - `images/` — original photos (committed to the repo)
+- `images/cutouts/` — the pots and logo with transparent backgrounds
 - `_headers` — Cloudflare Pages cache headers
+
+## Editing the home page
+
+The words and pictures live in `_data/home.json`:
+
+- `currently` — the sticky note.
+- `interests` — the ticked list. `"sub": true` indents an item under the one
+  above it; `note` is the small grey aside.
+- `shelf` — pots on the shelf, left to right. `scale` is height relative to the
+  tall vases (1 = vase height, 0.5 = half). `"books": true` stands a piece on
+  two little books; `"optional": true` hides it on phones.
+- `prints` — the four taped-up photos (filenames in `images/`).
+- `events` — the ticket stubs, numbered in order. `color` is `yolk`, `cobalt`,
+  `glory`, or `olive`. Add `"stamp": "Volun-<br>teer"` for an ink stamp or
+  `"ribbon": "2nd"` for a silver ribbon.
+
+New shelf pieces need a transparent PNG in `images/cutouts/`. On a Mac,
+long-press a subject in Photos or Preview and choose "Copy Subject" to cut one
+out.
 
 ## Adding photos to a gallery
 

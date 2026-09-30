@@ -16,6 +16,23 @@ function escapeAttr(s) {
   return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 }
 
+// A resized WebP <img> with a srcset, for the home page's cutouts and prints.
+// WebP keeps the cutouts' transparency. `widths` is a comma-separated list.
+async function webpImg(file, alt, sizes, widths, attrs = "") {
+  const meta = await Image(`images/${file}`, {
+    widths: String(widths).split(",").map((w) => parseInt(w, 10)),
+    formats: ["webp"],
+    outputDir: "_site/img/",
+    urlPath: "/img/",
+    fixOrientation: true,
+  });
+  const variants = meta.webp;
+  const largest = variants[variants.length - 1];
+  return `<img src="${variants[0].url}" srcset="${variants.map((v) => v.srcset).join(", ")}" ` +
+    `sizes="${sizes}" width="${largest.width}" height="${largest.height}" ` +
+    `alt="${escapeAttr(alt)}" decoding="async"${attrs ? " " + attrs : ""}>`;
+}
+
 async function galleryItem(line, i, count) {
   const [file, alt = ""] = line.split("|").map((s) => s.trim());
   const meta = await Image(`images/${file}`, {
@@ -54,6 +71,7 @@ export default function (eleventyConfig) {
     "images",
     "favicon.svg",
     "gallery.js",
+    "home.js",
     "robots.txt",
     "sitemap.xml",
     "_headers",
@@ -63,21 +81,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addShortcode("year", () => String(new Date().getFullYear()));
 
-  // Full-page background photo: preloads a WebP version (~60% smaller than the
-  // JPEG) and swaps it in via image-set(), keeping the JPEG in style.css as the
-  // fallback for browsers without image-set() type() support.
-  eleventyConfig.addShortcode("heroBackground", async function (file) {
-    const meta = await Image(`images/${file}`, {
-      widths: ["auto"],
-      formats: ["webp"],
-      outputDir: "_site/img/",
-      urlPath: "/img/",
-      fixOrientation: true,
-    });
-    const url = meta.webp[0].url;
-    return `<link rel="preload" as="image" href="${url}" type="image/webp">\n` +
-      `  <style>body.home { background-image: image-set(url("${url}") type("image/webp"), url("/images/${file}") type("image/jpeg")); }</style>`;
-  });
+  eleventyConfig.addShortcode("webp", webpImg);
 
   // {% gallery %} … {% endgallery %} — one photo per line, as a filename in
   // images/, optionally followed by " | alt text". Aspect ratios are read from

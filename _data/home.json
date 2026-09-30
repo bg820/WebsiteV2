@@ -1,0 +1,38 @@
+{
+  "tagline": "Engineer building the systems that allow for impactful work. Also: pots, photos, and noticing small things.",
+
+  "currently": {
+    "headline": "Settling into Berkeley and finding cool humans.",
+    "body": "New in town and looking for people to walk, talk, and throw pots with. If you like the vibe, say hi."
+  },
+
+  "interests": [
+    { "label": "AI safety", "url": "https://ai-2027.com/", "note": "a good read" },
+    { "label": "AIS hiring snapshot", "url": "https://bg820.github.io/ais-hiring-snapshot", "note": "I made this", "sub": true },
+    { "label": "Effective altruism", "url": "https://www.effectivealtruism.org/articles/introduction-to-effective-altruism", "note": "a good read" },
+    { "label": "Veganism", "url": "https://80000hours.org/problem-profiles/factory-farming/", "note": "a good read" },
+    { "label": "Yoga" }
+  ],
+
+  "shelf": [
+    { "file": "cutouts/vase-spiral.png", "alt": "Cream vase with spiral ridges", "scale": 1, "books": true },
+    { "file": "cutouts/vase-cobalt.png", "alt": "Cobalt vase with a white band", "scale": 1 },
+    { "file": "cutouts/tumbler.png", "alt": "Tumbler with an orange rim", "scale": 0.5, "optional": true },
+    { "file": "cutouts/vase-bulge.png", "alt": "Cream vase with a toasted flash and stacked bulges", "scale": 1 },
+    { "file": "cutouts/orchid.png", "alt": "Green planter holding an orchid", "scale": 1.2 }
+  ],
+
+  "prints": [
+    { "file": "photo-9.jpg", "alt": "A cat asleep on top of an arcade machine", "caption": "shop cat, off duty" },
+    { "file": "photo-8.jpg", "alt": "An old fridge left out on a lawn", "caption": "fridge, free to good home" },
+    { "file": "photo-22.jpg", "alt": "Self-portrait in a round traffic mirror", "caption": "me, in a mirror" },
+    { "file": "photo-17.jpg", "alt": "A corner fruit stand under a white awning", "caption": "fruit stand, rush hour" }
+  ],
+
+  "events": [
+    { "kind": "Conference", "name": "Manifest 2026", "dates": "Jun 12–14", "place": "Lighthaven, Berkeley", "role": "Admit one", "color": "yolk" },
+    { "kind": "Conference", "name": "EAGx Berkeley", "dates": "Aug 21–23", "place": "Lighthaven, Berkeley", "role": "Crew", "color": "cobalt", "stamp": "Volun-<br>teer" },
+    { "kind": "Gathering", "name": "AGI.WTF", "dates": "Sep 22–23", "place": "Lighthaven, Berkeley", "role": "Admit one", "color": "glory" },
+    { "kind": "Hackathon", "name": "BlueDot Hackathon", "dates": "Sep 26–27 · 2nd place", "role": "Hacker", "color": "olive", "ribbon": "2nd" }
+  ]
+}
