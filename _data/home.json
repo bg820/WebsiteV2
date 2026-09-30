@@ -3,13 +3,13 @@
 
   "photo": {
     "file": "bryce-laughing.jpg",
-    "alt": "Bryce mid-laugh, chin on a fist, in a white cap with a yellow brim",
-    "caption": "hi, it's me!"
+    "alt": "Bryce in a white cap with a yellow brim",
+    "caption": "hi!"
   },
 
   "currently": {
     "headline": "Settling into Berkeley and finding cool humans.",
-    "body": "New in town and looking for people to walk, talk, and throw pots with. If you like the vibe, say hi."
+    "body": "New in town and looking for people to walk, talk, and throw pots with. Say hi!"
   },
 
   "interests": [
@@ -30,15 +30,15 @@
 
   "prints": [
     { "file": "photo-9.jpg", "alt": "A cat asleep on top of an arcade machine", "caption": "shop cat, off duty" },
-    { "file": "photo-8.jpg", "alt": "An old fridge left out on a lawn", "caption": "fridge, free to good home" },
-    { "file": "photo-22.jpg", "alt": "Self-portrait in a round traffic mirror", "caption": "me, in a mirror" },
+    { "file": "photo-8.jpg", "alt": "An old fridge left out on a lawn", "caption": "gently used fridge" },
+    { "file": "photo-22.jpg", "alt": "Self-portrait in a round traffic mirror", "caption": "me in a mirror" },
     { "file": "photo-17.jpg", "alt": "A corner fruit stand under a white awning", "caption": "fruit stand, rush hour" }
   ],
 
   "events": [
     { "kind": "Conference", "name": "Manifest 2026", "dates": "Jun 12–14", "place": "Lighthaven, Berkeley", "role": "Admit one", "color": "yolk" },
     { "kind": "Conference", "name": "EAGx Berkeley", "dates": "Aug 21–23", "place": "Lighthaven, Berkeley", "role": "Crew", "color": "cobalt", "stamp": "Volun-<br>teer" },
-    { "kind": "Gathering", "name": "AGI.WTF", "dates": "Sep 22–23", "place": "Lighthaven, Berkeley", "role": "Admit one", "color": "glory" },
-    { "kind": "Hackathon", "name": "BlueDot Hackathon", "dates": "Sep 26–27 · 2nd place", "role": "Hacker", "color": "olive", "ribbon": "2nd" }
+    { "kind": "Conference", "name": "AGI.WTF", "dates": "Sep 22–23", "place": "Lighthaven, Berkeley", "role": "Admit one", "color": "glory" },
+    { "kind": "Hackathon", "name": "BlueDot Hackathon", "dates": "Sep 26–27 · won 2nd place!", "role": "Hacker", "color": "olive", "ribbon": "2nd" }
   ]
 }
