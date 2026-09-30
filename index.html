@@ -89,16 +89,17 @@ ogDescription: Engineer building the systems that allow for impactful work.
       <div class="section-head"><h2 class="tape-label" id="seen">You may have seen me at</h2><p>say hi next time</p></div>
       <div class="stubs">
         {%- for ev in home.events %}
-        <div class="stub s-{{ ev.color }}{% if ev.ribbon %} award{% endif %}">
+        {%- set tag = "a" if ev.url else "div" %}
+        <{{ tag }} class="stub s-{{ ev.color }}{% if ev.ribbon %} award{% endif %}"{% if ev.url %} href="{{ ev.url }}" target="_blank" rel="noopener"{% endif %}>
           <div class="main">
-            <div class="kind">{{ ev.kind }}</div>
+            <div class="kind">{{ ev.kind }}{% if ev.url %}<span class="out" aria-hidden="true">&nearr;</span>{% endif %}</div>
             <div class="ev">{{ ev.name }}</div>
             <div class="meta">{{ ev.dates }}{% if ev.place %}<br>{{ ev.place }}{% endif %}</div>
             {%- if ev.stamp %}<span class="ink-stamp">{{ ev.stamp | safe }}</span>{% endif %}
             {%- if ev.ribbon %}{% include "ribbon.svg.njk" %}{% endif %}
           </div>
           <div class="foot"><span>{{ ev.role }}</span><span>No. {% if loop.index < 10 %}00{% elif loop.index < 100 %}0{% endif %}{{ loop.index }}</span></div>
-        </div>
+        </{{ tag }}>
         {%- endfor %}
       </div>
     </section>

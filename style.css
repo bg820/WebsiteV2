@@ -427,8 +427,13 @@ a:focus-visible, button:focus-visible {
 .stub:nth-child(4n+3) { transform: rotate(-1deg); }
 .stub:nth-child(4n+4) { transform: rotate(3deg) translateY(6px); }
 .stub:hover { transform: rotate(0) translateY(-4px); }
+a.stub { color: inherit; text-decoration: none; }
+a.stub:focus-visible { outline-offset: 3px; }
 .stub .main { padding: 1rem 1.1rem .7rem; }
 .stub .kind { font-size: .68rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+/* a small arrow marking stubs that link out; it nudges on hover */
+.stub .out { margin-left: .4em; display: inline-block; letter-spacing: 0; transition: transform .2s; }
+a.stub:hover .out { transform: translate(2px, -2px); }
 .stub .ev { font: 400 1.3rem/1.12 var(--display); margin: .3rem 0 .4rem; }
 .stub .meta { font-size: .8rem; line-height: 1.45; }
 .stub .foot {

@@ -36,9 +36,9 @@
   ],
 
   "events": [
-    { "kind": "Conference", "name": "Manifest 2026", "dates": "Jun 12–14", "place": "Lighthaven, Berkeley", "role": "Admit one", "color": "yolk" },
-    { "kind": "Conference", "name": "EAGx Berkeley", "dates": "Aug 21–23", "place": "Lighthaven, Berkeley", "role": "Crew", "color": "cobalt", "stamp": "Volun-<br>teer" },
-    { "kind": "Conference", "name": "AGI.WTF", "dates": "Sep 22–23", "place": "Lighthaven, Berkeley", "role": "Admit one", "color": "glory" },
-    { "kind": "Hackathon", "name": "BlueDot Hackathon", "dates": "Sep 26–27 · won 2nd place!", "role": "Hacker", "color": "olive", "ribbon": "2nd" }
+    { "kind": "Conference", "name": "Manifest 2026", "url": "https://manifest.is/", "dates": "Jun 12–14", "place": "Lighthaven, Berkeley", "role": "Admit one", "color": "yolk" },
+    { "kind": "Conference", "name": "EAGx Berkeley", "url": "https://www.effectivealtruism.org/ea-global/events/eagxberkeley-2026", "dates": "Aug 21–23", "place": "Lighthaven, Berkeley", "role": "Crew", "color": "cobalt", "stamp": "Volun-<br>teer" },
+    { "kind": "Conference", "name": "AGI.WTF", "url": "https://www.agi.wtf/", "dates": "Sep 22–23", "place": "Lighthaven, Berkeley", "role": "Admit one", "color": "glory" },
+    { "kind": "Hackathon", "name": "BlueDot Hackathon", "url": "https://hackpack.fly.dev/", "dates": "Sep 26–27 · won 2nd place!", "role": "Hacker", "color": "olive", "ribbon": "2nd" }
   ]
 }
