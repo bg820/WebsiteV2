@@ -257,8 +257,7 @@ a:focus-visible, button:focus-visible {
 .coffee-card .yay { font: 400 1.25rem/1 var(--display); color: var(--glory); margin-bottom: .45rem; }
 .coffee-card strong { font-weight: 500; white-space: nowrap; }
 .coffee-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .9rem; }
-.coffee-actions .copy,
-.coffee-actions .open-mail {
+.coffee-actions > * {
   font: 500 .82rem var(--mono);
   color: var(--ink);
   background: var(--paper);
@@ -269,8 +268,7 @@ a:focus-visible, button:focus-visible {
   text-decoration: none;
   transition: background .15s, transform .15s;
 }
-.coffee-actions .copy:hover,
-.coffee-actions .open-mail:hover { background: var(--yolk); transform: rotate(-2deg); }
+.coffee-actions > *:hover { background: var(--yolk); transform: rotate(-2deg); }
 .coffee-actions .copy.done { background: #d6de9f; }
 .coffee-card .close {
   position: absolute;
