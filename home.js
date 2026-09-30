@@ -7,15 +7,18 @@
   if (!trigger || !card) return;
   var copyBtn = card.querySelector('.copy');
 
+  function isOpen() { return card.classList.contains('open'); }
+
+  // The drawer slides and unfolds via CSS transitions on the .open class.
   function setOpen(open) {
-    card.hidden = !open;
+    card.classList.toggle('open', open);
     trigger.setAttribute('aria-expanded', String(open));
-    (open ? copyBtn : trigger).focus();
+    (open ? copyBtn : trigger).focus({ preventScroll: true });
   }
 
   trigger.addEventListener('click', function (e) {
     e.preventDefault();
-    setOpen(card.hidden);
+    setOpen(!isOpen());
   });
   card.querySelector('.close').addEventListener('click', function () { setOpen(false); });
   card.addEventListener('keydown', function (e) {
