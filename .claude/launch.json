@@ -7,6 +7,12 @@
       "runtimeArgs": ["start"],
       "port": 8765,
       "autoPort": false
+    },
+    {
+      "name": "website-alt",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["eleventy", "--serve", "--port", "8766"],
+      "port": 8766
     }
   ]
 }
