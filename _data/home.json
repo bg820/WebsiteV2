@@ -13,11 +13,11 @@
   },
 
   "interests": [
-    { "label": "AI safety", "url": "https://ai-2027.com/", "note": "a good read" },
+    { "label": "AI safety", "url": "https://safe.ai/work/statement-on-ai-extinction-risk", "note": "good read" },
     { "label": "AIS hiring snapshot", "url": "https://bg820.github.io/ais-hiring-snapshot", "note": "I made this", "sub": true },
-    { "label": "Effective altruism", "url": "https://www.effectivealtruism.org/articles/introduction-to-effective-altruism", "note": "a good read" },
-    { "label": "Veganism", "url": "https://80000hours.org/problem-profiles/factory-farming/", "note": "a good read" },
-    { "label": "Yoga" }
+    { "label": "Effective altruism", "url": "https://www.effectivealtruism.org/articles/introduction-to-effective-altruism", "note": "good intro" },
+    { "label": "Veganism", "url": "https://80000hours.org/problem-profiles/factory-farming/", "note": "boo factory farming" },
+    { "label": "Yoga", "note": "no link, just go stretch" }
   ],
 
   "shelf": [
