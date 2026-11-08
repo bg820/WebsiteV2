@@ -63,7 +63,7 @@ ogDescription: Engineer building the systems that allow for impactful work.
     </div>
 
     <section aria-labelledby="make">
-      <div class="section-head"><h2 class="tape-label" id="make">Things I make</h2><p>with my hands</p></div>
+      <div class="section-head"><h2 class="tape-label" id="make">Things I make</h2></div>
       <div class="shelf-wrap">
         <div class="shelf">
           {%- asyncEach piece in home.shelf %}
@@ -76,7 +76,7 @@ ogDescription: Engineer building the systems that allow for impactful work.
     </section>
 
     <section aria-labelledby="notice">
-      <div class="section-head"><h2 class="tape-label" id="notice">Things I notice</h2><p>with a camera</p></div>
+      <div class="section-head"><h2 class="tape-label" id="notice">Things I notice</h2></div>
       <div class="prints">
         {%- asyncEach print in home.prints %}
         <figure class="print">
@@ -88,7 +88,7 @@ ogDescription: Engineer building the systems that allow for impactful work.
     </section>
 
     <section aria-labelledby="seen">
-      <div class="section-head"><h2 class="tape-label" id="seen">You may have seen me at</h2><p>say hi next time</p></div>
+      <div class="section-head"><h2 class="tape-label" id="seen">You may have seen me at</h2></div>
       <div class="stubs">
         {%- for ev in home.events %}
         {%- set tag = "a" if ev.url else "div" %}
